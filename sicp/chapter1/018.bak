@@ -1,0 +1,16 @@
+#lang sicp
+(define (double x)
+  (* x 2))
+(define (even? n)
+  (= (remainder n 2) 0))
+
+(define (halve x)
+  (if (not (even? x)) x (/ x 2)))
+
+(define (fast-mult* a b)
+ (fast-mult*-iter 0 a b))
+
+(define (fast-mult*-iter product a b)
+  (cond ((= b 0) product)
+        ((even? b)(fast-mult*-iter product (double a) (halve b)))
+        (else (fast-mult*-iter (+ product a) a (-b 1)))))

@@ -1,0 +1,5 @@
+#lang sicp
+(define (fib n)
+  (cond ((< n 3) n)
+        (else (+ (fib (- n 1)) (fib (- n 2)) (fib (- n 3)))))
+
