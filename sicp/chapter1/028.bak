@@ -1,0 +1,13 @@
+#lang sicp
+(define (square x) (* x x))
+(define (expmod base exp m) 
+  (cond ((= exp 0) 1) 
+        ((even? exp) 
+         (remainder (square (expmod base (/ exp 2) m)) 
+                    m)) 
+        (else 
+         (remainder (* base (expmod base (- exp 1) m)) 
+                    m))))
+(define (check-miller-rabin? a m)
+  (if (and (> a 1) (< a (- m 1)))
+      (if (= (reminder (square a) m) 1) true false) false)
