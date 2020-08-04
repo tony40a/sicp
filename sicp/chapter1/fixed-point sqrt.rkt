@@ -25,4 +25,5 @@
   (fixed-point (lambda (x) (+ 1 (/ 1 x))) 1.0))
 
 
-(f (/ (+ 1 (sqrt 5)) 2))
+;(f (/ (+ 1 (sqrt 5)) 2))
+(sqrt 16)
