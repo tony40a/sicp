@@ -1,0 +1,3 @@
+#lang sicp
+(define (make-segment start-p end-p)
+  (cons (start-p end-p)))
