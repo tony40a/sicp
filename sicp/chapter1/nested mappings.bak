@@ -1,0 +1,17 @@
+#lang sicp
+;процедура формирования списка элементов от low к high
+(define (enumerate-interval low high)
+  (if (> low high)
+      nil
+      (cons low (enumerate-interval (+ low 1) high))))
+
+(define (sequence_simple_n n)
+  (accumulate append
+              nil
+              (map (lambda (i)
+                     (map (lambda (j) (list i j))
+                          (enumerate-interval 1 (- i 1))))
+                   (enumerate-intreval 1 n))))
+
+(define (flatmap proc seq)
+  (accumulate append nil (map proc seq)))

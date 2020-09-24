@@ -1,0 +1,36 @@
+#lang sicp
+;последовательности как стандартные интерфейсы
+;универсальный фильтр последовательности
+(define (filter predicate sequence)
+  (cond ((null? sequence) nil)
+        ((predicate (car sequence))
+         (cons (car sequence)
+               (filter predicate (cdr sequence))))
+        (else (filter predicate (cdr sequence)))))
+
+(filter odd? (list 1 2 3 4 5))
+
+;аккумулятор последовательности
+(define (accumulate op initial sequence)
+  (if (null? sequence)
+      initial
+      (op (car sequence)
+          (accumulate op initial (cdr sequence)))))
+
+(accumulate + 0 (list 1 2 3 4 5))
+
+;для фибоначчи нужно задать последовательность целых чисел
+(define (enumerate-interval low high)
+  (if (> low high)
+      nil
+      (cons low (enumerate-interval (+ low 1) high))))
+
+;для обработки деревьев нужен список листьев
+(define (enumerate-tree tree)
+  (cond ((null? tree) nil)
+        ((not (pair? tree)) (list tree)) ;здесь list нужен, чтобы сработало append ниже, у которого на вход подается в первом аргументе список
+        (else (append (enumerate-tree (car tree))
+                      (enumerate-tree (cdr tree))))))
+
+
+(append 4 5)

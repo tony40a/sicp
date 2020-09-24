@@ -1,0 +1,3 @@
+#lang sicp
+(define (cons a b) 
+  (* (power 2 a) (power 3 b)))

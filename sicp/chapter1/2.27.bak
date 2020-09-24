@@ -1,0 +1,7 @@
+#lang sicp
+(define (reverse items)
+  (define (reverse-iter source result) 
+    (if (null? source) 
+        result 
+        (reverse-iter (cdr source) (cons (car source) result)))) 
+  (reverse-iter items (list)))
